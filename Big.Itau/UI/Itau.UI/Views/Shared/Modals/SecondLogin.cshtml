@@ -1,0 +1,61 @@
+﻿@using System.Configuration
+@model Mastercard.UI.Interface.Models.CodeViewModel
+
+
+<section class="calculating_login">
+    <div class="modal-dialog modal-dialog-centered" role="document" id="SecondLoginCard">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"></button><img class="icon" src="~/Content/img/shapes/padlock.svg" alt="">
+                <h5 class="modal-title">Descubre tu información personal    </h5>
+                <p class="my-3">Para hacerlo y porque nos importa tu seguridad, es necesario que ingreses los últimos 4 dígitos de cualquiera de tus Tarjetas Maestro o Mastercard Bancolombia sean débito o crédito.   </p>
+                @using (Ajax.BeginForm("SecondLoginCard", "Profile", FormMethod.Post, new AjaxOptions
+                {
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "SecondLoginCard",
+                    OnSuccess = "OnSuccess"
+                }, new { }))
+                {
+                    <div class="capcha d-flex justify-content-center">
+                        <div class="g-recaptcha" id="gRecaptchaResponse" data-sitekey="@System.Web.Configuration.WebConfigurationManager.AppSettings["reCAPTCHA.Key.Public"]">
+                        </div>
+                    </div>
+                    if (!ViewData.ModelState.IsValidField("Recaptcha"))
+                    {
+                        <p class="error">@Html.ValidationMessage("Recaptcha")</p>
+                    }
+                    <div class="py-3 form-code">
+                        @Html.TextBoxFor(x => x.Number1, new { @Class = "codeInput", @type = "tel", @maxlength = "1" })
+                        @Html.TextBoxFor(x => x.Number2, new { @Class = "codeInput", @type = "tel", @maxlength = "1" })
+                        @Html.TextBoxFor(x => x.Number3, new { @Class = "codeInput", @type = "tel", @maxlength = "1" })
+                        @Html.TextBoxFor(x => x.Number4, new { @Class = "codeInput", @type = "tel", @maxlength = "1" })
+                    </div>
+                    if (!ViewData.ModelState.IsValidField("CardNumber"))
+                    {
+                        <p class="error">@Html.ValidationMessage("CardNumber")</p>
+                    }
+                    <input hidden name="Page" id="Page" />
+                    <button hidden id="formSecondLogin" type="submit"></button>
+                    <a class="button button-yellow" href="#" onclick="document.getElementById('formSecondLogin').click();">Continuar</a>
+
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script>
+    @ViewBag.StartUpScript
+    function pages(Page) {
+        $('#Page').val(Page);
+    }
+    function OnSuccess(data) {
+        if (data.NewUrl) {
+            window.location.href = data.NewUrl;
+        }
+        if (data.ReturnUrl) {
+            window.location.href = data.ReturnUrl;
+        }
+    }
+</script>

@@ -1,0 +1,97 @@
+﻿@using System.Configuration
+@model  Mastercard.UI.Business.ViewModels.ProfileModelViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pásala Ganando / Bancolombia</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap-grid.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap-reboot.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/slick.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/slick-theme.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/main.css")">
+    <script type="text/javascript" src="@Url.Content("~/Content/js/vendor/jquery.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Dev.js")"></script>
+</head>
+<body>
+    <section class="header-brand">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <a href="@Url.Action("FirstLogin","Account")"><img class="img-fluid" src="~/Content/img/brand/logo-header.svg"></a>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="home">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-7 py-4">
+                    <div class="shapes"><img class="img-fluid" src="~/Content/img/assets/asset-login.png"></div>
+                </div>
+                <div class="col-md-4">
+                    <h1>Pásala Ganando</h1>
+                    <p>con tus Tarjetas Maestro o Mastercard Bancolombia, sean débito o crédito. <span>¡Ya estás participando!</span></p>
+                    @using (Html.BeginForm("FirstLogin", "Account", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { @id = "FormLogin", autocomplete = "off" }))
+                    {
+                        <div class="login-form">
+                            <div class="group">
+                                <input type="number" required onkeypress="return (event.charCode &gt;= 1 &amp;&amp; event.charCode &lt;= 57)"
+                                       name="Identification" id="Identification"><span class="bar"></span><label>Ingresa tu cédula</label>
+                                @if (!ViewData.ModelState.IsValidField("Identification"))
+                                {
+                                    <p class="error">@Html.ValidationMessage("Identification")</p>
+                                }
+                            </div>
+                            <div class="capcha d-flex justify-content-center">
+                                <div class="g-recaptcha" id="gRecaptchaResponse" data-sitekey="@System.Web.Configuration.WebConfigurationManager.AppSettings["reCAPTCHA.Key.Public"]">
+                                </div>
+                            </div>
+                            @if (!ViewData.ModelState.IsValidField("Recaptcha"))
+                            {<div class="group">
+                                    <p class="error">@Html.ValidationMessage("Recaptcha")</p>
+                                </div>
+                            }
+                            <div class="terms">
+                                <input id="AcepTyc" type="checkbox" name="AcepTyc" value="true">
+                                <label class="checkbox-label" id="label-1" for="AcepTyc" onclick="TermsOnClick();"></label>
+                                <label class="text" for="AcepTyc">Acepto términos y condiciones</label>
+                            </div>
+                            @if (!ViewData.ModelState.IsValidField("Terminos"))
+                            {<div class="group">
+                                    <p class="error">@Html.ValidationMessage("Terminos")</p>
+                                </div>
+                            }
+                            <a class="button button-yellow" href="#" onclick="document.getElementById('FormLogin').submit();">Entrar</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+    <p class="text-center pt-4">Campaña vigente desde el 17 de agosto hasta el 3 de octubre de 2021.</p>
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+    <script type="text/javascript" src="@Url.Content("~/Content/js/vendor/jquery.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/js/vendor/bootstrap.bundle.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/js/vendor/bootstrap.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/js/vendor/slick.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/js/main.js")"></script>
+    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <div class="modal fade calculating_login" id="code-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        @{Html.RenderPartial("~/Views/Shared/Modals/SecondLogin.cshtml", new Mastercard.UI.Interface.Models.CodeViewModel());}
+    </div>
+
+</body>
+</html>
+<script>
+
+    @Html.Raw(ViewBag.StartUpScript)
+</script>

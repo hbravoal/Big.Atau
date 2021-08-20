@@ -1,0 +1,91 @@
+﻿@model  Mastercard.UI.Business.ViewModels.MyRedemptionsViewModel
+@using System.Globalization;
+<div class="container" data-start="tour">
+    <div class="row justify-content-center pt-4 redemptions">
+        <div class="col-8 text-center">
+            <p><strong>¡Aquí siempre tendrás la información para disfrutar tu premio!</strong></p>
+        </div>
+    </div>
+    <div class="row justify-content-center pt-4 redemptions" id="step10">
+        @if ((Model.MisionView == null && Model.productName == null) || (string.IsNullOrEmpty(Model.productName)
+            && Model.MisionView.MisionsTarget.Count <= 0))
+        {
+            <div class="justify-content-center">
+                <p class="text-center pt-4">Aún no has redimido bonos ni acumulado cupones. ¡Hazlo para estar más cerca de disfrutar!</p>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.productName))
+        {
+
+
+            <div class="col-md-5 d-flex">
+                <div class="card mb-3 p-4">
+                    <p class="title-line"><strong>Redención de bono</strong></p>
+                    <div class="card-color bg-blue">
+                        <div class="row m-0">
+                            <div class="col-6 p-0 d-flex align-items-center">
+                                @if (Model.imageUrl.Length > 40 )
+                                {
+
+
+                                    <div class="img-radius"><img class="w-100" src="@Model.imageUrl"></div>
+                                }
+                                else
+                                {
+                                    <div class="img-radius"><img class="w-100" src="@Model.getUrlImage()"></div>
+                                }
+                            </div>
+                            <div class="col-6 pr-0 d-flex justify-content-center flex-column">
+                                <p class="@(Model.productName == null ? "d-none" : "title")"><span>Nombre: </span>@Model.productName</p>
+                                <p class="@(Model.Date == null || Model.Date.ToString("yyyy") == "0001"? "d-none" : "title ")"> <span>Fecha: </span>@Model.Date.ToString("dd/MM/yyyy")</p>
+                                <p><span class="@(Model.productCode == null || Model.productCode == ""? "d-none" : "title " )">Código: </span>@Model.productCode</p>
+                            </div>
+                            @if (Model.linkPdfRedemption != null)
+                            {
+                                <div class="col-md-12 p-0"><a class="button button-white py-0" href="@Model.linkPdfRedemption" target="_blank"> <span class="py-1 pdf">PDF</span></a></div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>}
+
+
+
+        @if (!Model.MisionView.MisionsTarget.All(x => x.Active == false))
+        {
+            <div class="col-md-5 d-flex">
+                <div class="card mb-3 p-4 table-card w-100">
+                    <p class="title-line"><strong>Acumulación de cupones</strong></p>
+                    <div class="row m-0">
+                        <div class="col-3 px-1 d-flex align-items-center justify-content-center">
+                            <p><strong>Cantidad de cupones</strong></p>
+                        </div>
+                        <div class="col-4 px-1 d-flex align-items-center justify-content-center">
+                            <p><strong>Método <br>de acumulación</strong></p>
+                        </div>
+                        <div class="col-5 px-1 d-flex align-items-center justify-content-center">
+                            <p><strong>Fecha</strong></p>
+                        </div>
+                    </div>
+                    @foreach (var misionTarget in Model.MisionView.MisionsTarget.Where(x => x.Active == true).OrderByDescending(x => x.CreateDate))
+                    {
+                        foreach (var misions in Model.MisionView.Misions.Where(x => x.Id == misionTarget.MisionId))
+                        {
+                            <div class="row m-0">
+                                <div class="col-3 px-1 d-flex align-items-center justify-content-center">
+                                    <p>@misions.Point.ToString("N0", new CultureInfo("is-Is"))</p>
+                                </div>
+                                <div class="col-4 px-1 d-flex align-items-center justify-content-center">
+                                    <p>@misions.Name</p>
+                                </div>
+                                <div class="col-5 px-1 d-flex align-items-center justify-content-center">
+                                    <p>@misionTarget.ReadDate.ToString("dd/MM/yyyy")</p>
+                                </div>
+                            </div>}
+                    }
+                    <p class="text-center py-2 bg-green"><strong>Has acumulado:  @Model.MisionView.PointAcumulate.ToString("N0", new CultureInfo("is-Is")) cupones</strong></p>
+
+                </div>
+            </div>}
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿
+@model Mastercard.UI.Business.ViewModels.MisionViewModels
+@using System.Globalization;
+@{string image = Model.MisionPoint.Misions.FirstOrDefault().Display.Replace(".", "_D.");
+}
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6"><a class="back" href="@Url.Action("Index","Mision")">Volver</a></div>
+        </div>
+        <div class="row justify-content-center pt-4">
+            <div class="col-md-5 text-center">
+                <p class="title-detail">Reto: @Model.MisionPoint.Misions.FirstOrDefault().Name</p><img class="w-100" src="~/Content/img/assets/@image" alt="">
+            </div>
+        </div>
+        <div class="row justify-content-center pt-4">
+            <div class="col-md-7 text-center">
+                <p>@Html.Raw(Model.MisionPoint.Misions.FirstOrDefault().Detail.ToString(new CultureInfo("is-Is")))</p>
+            </div>
+        </div>
+    </div>
+

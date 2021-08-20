@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{20FE837F-5359-4C95-879A-D4A57DB80E48}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mastercard.UI.Business</RootNamespace>
+    <AssemblyName>Mastercard.UI.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BL\AccountBL.cs" />
+    <Compile Include="BL\AwardBL.cs" />
+    <Compile Include="BL\CatalogBL.cs" />
+    <Compile Include="BL\MasterBl.cs" />
+    <Compile Include="BL\MisionBL.cs" />
+    <Compile Include="BL\RedemptionUIBl.cs" />
+    <Compile Include="BL\SegmentBL.cs" />
+    <Compile Include="Helpers\SessionHelper.cs" />
+    <Compile Include="Interface\IAccountBL.cs" />
+    <Compile Include="Interface\IAuthentication.cs" />
+    <Compile Include="Interface\ICatalogBL.cs" />
+    <Compile Include="Interface\IMasterBL.cs" />
+    <Compile Include="Interface\IRedemptionUIBl.cs" />
+    <Compile Include="Interface\Providers\ICatalogFachade.cs" />
+    <Compile Include="Interface\Providers\ICatalogProvider.cs" />
+    <Compile Include="Interface\IMisionBL.cs" />
+    <Compile Include="Interface\IAwardBL.cs" />
+    <Compile Include="Interface\ISegmentBL.cs" />
+    <Compile Include="Interface\Providers\IRedeemFachade.cs" />
+    <Compile Include="Interface\Providers\IRedeemProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\Catalog\CatalogFachade.cs" />
+    <Compile Include="Providers\Catalog\CatalogNetCommerceProvider.cs" />
+    <Compile Include="Providers\Catalog\CatalogMarketPlaceProvider.cs" />
+    <Compile Include="Providers\MarketPlaceAuthentication.cs" />
+    <Compile Include="Providers\Redemptions\MyRedemptionMarketPlace.cs" />
+    <Compile Include="Providers\Redemptions\RedeemQuantumProvider.cs" />
+    <Compile Include="ViewModels\AwardViewModel.cs" />
+    <Compile Include="ViewModels\CatalogMarketplaceResponseModel.cs" />
+    <Compile Include="ViewModels\CatalogViewModel.cs" />
+    <Compile Include="ViewModels\MisionViewModels.cs" />
+    <Compile Include="ViewModels\MyRedemptionsViewModel.cs" />
+    <Compile Include="ViewModels\ProfileModelViewModel.cs" />
+    <Compile Include="ViewModels\RedemptionViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\API\Mastercard.Business\Mastercard.Business.csproj">
+      <Project>{f468dd0e-4b5c-462d-9c84-d2fe9b5385df}</Project>
+      <Name>Mastercard.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Cross\Itau.Cross\Itau.Common.csproj">
+      <Project>{4f284dca-7a79-47a5-876d-d70ce1513f0e}</Project>
+      <Name>Itau.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

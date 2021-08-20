@@ -1,0 +1,110 @@
+﻿@using Mastercard.UI.Business.Helpers
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pásala Ganando / Bancolombia</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap-grid.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap-reboot.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/slick.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/slick-theme.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/main.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/main.map.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/Dev.css")">
+    <link rel="stylesheet" src="@Url.Content("~/Content/css/bootstrap-tour-standalone.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap-tour.min.css")">
+
+    <script type="text/javascript" src="@Url.Content("~/Content/js/vendor/jquery.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Dev.js")"></script>
+</head>
+<body>
+
+
+    @Html.Partial("~/Views/Shared/_Header.cshtml")
+    @if (!string.IsNullOrEmpty(SessionHelper.Token))
+    {
+
+        <div class="menu-burger">
+            <div class="items" id="step5">
+                <a class="item" href="@Url.Action("Index","Mision")">
+                    <p>Retos</p>
+                    <div class="icon"><img src="@Url.Content("~/Content/img/icons/retos.png")" alt=""></div>
+                </a>
+                @if (!SessionHelper.LoginComplete)
+                {
+                    <a class="item" style="cursor:pointer" onmouseover="this.style.textDecoration='underline';return true;" onmouseout="this.style.textDecoration='none';return true;" onclick="SecondLogin('R')">
+                        <p>Redención y acumulación</p>
+                        <div class="icon"><img src="@Url.Content("~/Content/img/icons/redencion.png")" alt=""></div>
+                    </a>
+                }
+                else
+                {
+                    <a class="item" href="@Url.Action("MyRedemption", "Redemption")">
+                        <p>Redención y acumulación</p>
+                        <div class="icon"><img src="@Url.Content("~/Content/img/icons/redencion.png")" alt=""></div>
+                    </a>
+                }
+
+                <a class="item" href="@Url.Action("Index","Awards")">
+                    <p>Premios especiales</p>
+                    <div class="icon"><img src="@Url.Content("~/Content/img/icons/premio.png")" alt=""></div>
+                </a>
+
+                <a class="item" href="@Url.Action("Index","Catalog")">
+                    <p>Catálogo de bonos</p>
+                    <div class="icon"><img src="@Url.Content("~/Content/img/icons/tiket.png")" alt=""></div>
+                </a>
+
+                <a class="item" href="@Url.Action("Index","Profile")">
+                    <p>Tu meta</p>
+                    <div class="icon"><img src="@Url.Content("~/Content/img/icons/tema.png")" alt=""></div>
+                </a>
+            </div>
+            <div class="icons" id="burger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    }
+    <section class="calculating_login how_to_participate" >
+        <div class="modal fade calculating_login" id="code-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            @{Html.RenderPartial("~/Views/Shared/Modals/SecondLogin.cshtml", new Mastercard.UI.Interface.Models.CodeViewModel());}
+        </div>
+        @RenderBody()
+
+    </section>
+    <p class="text-center pt-4">Campaña vigente desde el 17 de agosto hasta el 3 de octubre de 2021.</p>
+
+
+    @Html.Partial("~/Views/Shared/_Footer.cshtml")
+    <script type="text/javascript" src="@Url.Content("~/Content/js/vendor/jquery.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/js/vendor/bootstrap.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/js/vendor/slick.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/js/bootstrap-tour-standalone.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/js/bootstrap-tour.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/js/steps.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/js/main.js")"></script>
+
+    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <div class="modal fade calculating_login" id="code-modal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        @{Html.RenderPartial("~/Views/Shared/Modals/SecondLogin.cshtml", new Mastercard.UI.Interface.Models.CodeViewModel());}
+    </div>
+
+</body>
+</html>
+
+
+<script>
+    @Html.Raw(ViewBag.StartUpScript)
+    function SecondLogin(Page) {
+        $('#Page').val(Page)
+        $('#code-modal').modal('show');
+        
+    }
+    
+</script>

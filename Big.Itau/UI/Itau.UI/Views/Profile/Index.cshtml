@@ -1,0 +1,101 @@
+﻿@model Mastercard.Common.DTO.SegmentDTO
+@using Mastercard.UI.Business.Helpers
+@using System.Globalization;
+@{ Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 0;
+    }
+
+    <div class="container"  @(SessionHelper.LoginComplete == true? "data-start":"")>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="text-content" id="step3">
+                    <div class="text">
+                        <p><strong>Tu meta es hacer compras para activar:</strong></p>
+                        <p class="number"> <span class="num">@SessionHelper.BillingGroupGoal </span><span>grupos de<br>comercios</span></p>
+                    </div>
+                    <p class="text-center m-0">Llevas <span>@Model.ListCategoriesGroups.Count(x => x.IsComplete) </span>de @SessionHelper.BillingGroupGoal</p>
+                    <div class="icons">
+                        @foreach (var item in Model.ListCategoriesGroups)
+                        {
+                            if (item.IsComplete)
+                            {
+                                <div class="icon active"><img src="~/Content/img/icons/goals/@item.IconName" alt=""></div>
+                            }
+
+                        }
+                    </div>
+                </div>
+                <div class="text-center">
+                    @if (Model.DateTransaction.Year != 0001)
+                    {
+                        <img class="mr-2" src="@Url.Content("~/Content/img/icons/updated.svg")" alt="">
+
+                        <p class="d-inline-block">Última actualización de tus transacciones @Model.DateTransaction.ToString("dd/MM/yyyy") </p>
+                    }
+                </div>
+            </div>
+        </div>
+        
+        <div class="@(SessionHelper.LoginComplete == true? "row justify-content-center pb-5":"row justify-content-center")"
+             id="@(SessionHelper.LoginComplete == true? "step1":"")">
+
+            @foreach (var item in Model.ListCategoriesGroups.OrderBy(x => x.Position))
+            {
+                <div class="col-md-5">
+                    @if (SessionHelper.LoginComplete)
+                    {
+                        <div class="goal_percentage" id="@(count == 0 ? "step2" : "")" data-toggle="modal" data-target="#modal-categories" onclick="ShowCategoryGroup('@item.IconName', '@item.Name', '@Html.Raw(item.Description)')">
+                            <div class="icon"> <img src="~/Content/img/icons/goals/@(Math.Truncate(item.Percentage) == 100 ? "full.svg":item.IconName)" alt=""></div>
+                            <div class="percentage border">
+                                <p class="col-6 pl-0"><strong>@item.Name</strong></p>
+                                <p class="col-3 pl-0"><strong>Llevas: $@item.AvailableGroup.ToString("N0", new CultureInfo("is-Is"))</strong></p>
+                                <p class="col-3 pl-0"><strong>Te falta: $@item.LacksMoneyGroup.ToString("N0", new CultureInfo("is-Is"))</strong></p>
+                                <div class="amount" style="width:@Math.Truncate(item.Percentage)%"></div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="goal_percentage" >
+                            <div class="icon"> <img src="~/Content/img/icons/goals/@item.IconName" alt=""></div>
+                            <div class="percentage border" >
+                                <p class="d-block w-100"  data-toggle="modal" data-target="#modal-categories"
+                                            onclick="ShowCategoryGroup('@item.IconName', '@item.Name', '@Html.Raw(HttpUtility.HtmlDecode(item.Description))')">
+                                    <strong class="w-100 d-block" >@item.Name</strong>
+                                        </p>
+                                        <div class="amount" style="width:@Math.Truncate(item.Percentage)%"></div>
+                                        <div class="more" style="z-index:2" onclick="SecondLogin('P')"></div>
+                                    </div>
+                                </div>
+                            }
+
+                </div>
+                count++;
+            }
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-7" id="step4">
+                    <div class="@(SessionHelper.ChellengeCheck == false && Model.MisionsActive == true?  "row importanInfo active":"row importanInfo")">
+                        <div class="icon-bell"></div>
+                        <div class="col-6 img-destacada pr-0"><img class="d-block d-md-none w-100" src="@Url.Content("~/Content/img/assets/asset-profile-m.png")" alt=""><img class="d-none d-md-block w-100" src="@Url.Content("~/Content/img/assets/asset-profile.png")" alt=""><img class="figure" src="@Url.Content("~/Content/img/shapes/shape-2.svg")" alt=""></div>
+                        <div class="col-6 d-flex flex-wrap justify-content-center flex-column bg-lightBlue align-items-start py-3">
+                            <p class="m-0">Si te gusta desafiarte, cumple retos, acumula cupones y gana.</p><a href="@Url.Action("Index","Mision")"><b>Ver retos</b></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade modal-categories" id="modal-categories" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body text-center">
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close"></button>
+                            <div class="border-image"><img id="ImageCategoryGroup" alt=""></div>
+                            <h2 id="nameGroup"></h2>
+                            <p class="text" id="DescriptionGroup"></p>
+                            <a class="button button-yellow" data-dismiss="modal">Cerrar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
