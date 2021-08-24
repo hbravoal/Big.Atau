@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using Itau.Common.DTO.Request.MarketPlace;
+﻿using Itau.Common.DTO.Request.MarketPlace;
+using System.Collections.Generic;
 
 namespace Itau.Common.DTO.Response.MarketPlace
 {
-   
-
-    public class CreateOrderMarketPlaceResponse: RedemptionResponse
+    public class CreateOrderMarketPlaceResponse : RedemptionResponse
     {
         public bool Succeeded { get; set; }
         public object Message { get; set; }
@@ -27,6 +25,7 @@ namespace Itau.Common.DTO.Response.MarketPlace
         public string value { get; set; }
         public int orderId { get; set; }
     }
+
     public class MarketPlace
     {
         public string productCode { get; set; }
@@ -35,5 +34,4 @@ namespace Itau.Common.DTO.Response.MarketPlace
         public string conditions { get; set; }
         public string image { get; set; }
     }
-
 }

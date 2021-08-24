@@ -27,7 +27,6 @@ namespace Itau.Common.DTO.Response
         /// </summary>
         public bool IsComplete { get; set; }
 
-        
         /// <summary>
         /// Valor Acumulado en el grupo
         /// </summary>

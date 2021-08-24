@@ -1,15 +1,10 @@
-﻿using System;
-using System.Configuration;
-
-namespace Itau.Common.Enums
+﻿namespace Itau.Common.Enums
 {
-    
     public enum EnumCatalogNetCommerceType
     {
-        
         Digital = 7,
-        Donation=2,
-        Physical=3,
+        Donation = 2,
+        Physical = 3,
 
         /// <summary>
         /// Producto de Puntos Colombia
@@ -19,6 +14,6 @@ namespace Itau.Common.Enums
         /// <summary>
         /// Sería para Marketplace(Quantum)
         /// </summary>
-        External=500
+        External = 500
     }
 }

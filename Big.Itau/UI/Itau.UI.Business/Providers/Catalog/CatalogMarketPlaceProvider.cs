@@ -1,7 +1,7 @@
-﻿using Mastercard.Common.DTO.Request.MarketPlace;
-using Mastercard.Common.DTO.Response.MarketPlace;
-using Mastercard.Common.Helpers;
-using Mastercard.Common.Wrapper;
+﻿using Itau.Common.DTO.Request.MarketPlace;
+using Itau.Common.DTO.Response.MarketPlace;
+using Itau.Common.Helpers;
+using Itau.Common.Wrapper;
 using Mastercard.UI.Business.Helpers;
 using Mastercard.UI.Business.Interface.Providers;
 using System;
@@ -33,12 +33,9 @@ namespace Mastercard.UI.Business.Providers.Catalog
 
             if (!CatalogResponse.IsSuccess)
             {
-                Common.Diagnostics.ExceptionLogging.LogException(new Exception
+                Itau.Common.Diagnostics.ExceptionLogging.LogException(new Exception
                     ($"Ocurrió un error al intentar Refrescar Catálogo para el IdMask:{SessionHelper.IdMask}| UserIdentity{SessionHelper.Token}| Token: {SessionHelper.Token} | Response.Result: {Newtonsoft.Json.JsonConvert.SerializeObject(response.Result)}"));
-                response.Error = new MessageResult
-                {
-                    Message = CatalogResponse.Message
-                };
+
                 return response;
             }
             response.Result = CatalogResponse.Result;

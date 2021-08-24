@@ -15,6 +15,5 @@ namespace Itau.Common.DTO.Response
         public bool? Active { get; set; }
         public string Description { get; set; }
         public CustomerAwardDTO CustomerAwar { get; set; }
-
     }
 }

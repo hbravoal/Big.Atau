@@ -7,8 +7,8 @@
     <ProjectGuid>{4F284DCA-7A79-47A5-876D-D70CE1513F0E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mastercard.Common</RootNamespace>
-    <AssemblyName>Mastercard.Common</AssemblyName>
+    <RootNamespace>Itau.Common</RootNamespace>
+    <AssemblyName>Itau.Common</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -82,7 +82,7 @@
     <Compile Include="DTO\Response\CustomerAwardDTO.cs" />
     <Compile Include="DTO\Response\CustomerDTO.cs" />
     <Compile Include="DTO\Response\DepartmentDTO.cs" />
-    <Compile Include="DTO\Response\LoginCustomerForIdentificationResponse.cs" />
+    <Compile Include="DTO\Response\LoginResponse.cs" />
     <Compile Include="DTO\Response\MarketPlace\AuthMarketPlaceResponse.cs" />
     <Compile Include="DTO\Response\MarketPlace\CreateOrderMarketPlaceResponse.cs" />
     <Compile Include="DTO\Response\MarketPlace\DepartmentResponse.cs" />

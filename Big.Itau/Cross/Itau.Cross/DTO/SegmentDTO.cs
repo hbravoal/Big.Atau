@@ -18,6 +18,7 @@ namespace Itau.Common.DTO
         /// Cantidad de grupos que necesita activar.
         /// </summary>
         public byte BillingGroupGoal { get; set; }
+
         /// <summary>
         /// Si el customer puede redimir
         /// </summary>

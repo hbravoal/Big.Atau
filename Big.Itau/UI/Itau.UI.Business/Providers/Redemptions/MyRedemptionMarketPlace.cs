@@ -1,14 +1,13 @@
-﻿using Mastercard.Common.DTO.Request.MarketPlace;
-using Mastercard.Common.Helpers;
-using Mastercard.Common.Wrapper;
+﻿using Itau.Common.DTO.Request.MarketPlace;
+using Itau.Common.DTO.Response;
+using Itau.Common.Helpers;
+using Itau.Common.Wrapper;
 using Mastercard.UI.Business.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Mastercard.Common.DTO.Response.MarketPlace;
-using Mastercard.Common.DTO.Response;
 
 namespace Mastercard.UI.Business.Providers.Redemptions
 {
@@ -38,10 +37,9 @@ namespace Mastercard.UI.Business.Providers.Redemptions
 
             if (MyRedemptions == null || !MyRedemptions.IsSuccess)
             {
-                response.Error = MyRedemptions.Error;
                 return response;
             }
-            response.Result = MyRedemptions.Result.FindAll(x=>x.OrderExtendedProperties.Count > 0);
+            response.Result = MyRedemptions.Result.FindAll(x => x.OrderExtendedProperties.Count > 0);
             response.IsSuccess = true;
             return response;
         }

@@ -1,7 +1,7 @@
-﻿using Mastercard.Common.DTO.Request.MarketPlace;
-using Mastercard.Common.DTO.Response;
-using Mastercard.Common.DTO.Response.MarketPlace;
-using Mastercard.Common.Wrapper;
+﻿using Itau.Common.DTO.Request.MarketPlace;
+using Itau.Common.DTO.Response;
+using Itau.Common.DTO.Response.MarketPlace;
+using Itau.Common.Wrapper;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

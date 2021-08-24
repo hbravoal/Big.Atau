@@ -5,10 +5,8 @@
     /// </summary>
     public enum RedemptionTypeEnum
     {
-
-        PointRedemption=1,
-        NetCommerceRedemption=2,
+        PointRedemption = 1,
+        NetCommerceRedemption = 2,
         MarketPlaceRedemption
-
     }
 }

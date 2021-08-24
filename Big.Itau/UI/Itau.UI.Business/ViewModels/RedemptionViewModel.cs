@@ -1,6 +1,5 @@
-﻿using Mastercard.Common.Enums;
+﻿using Itau.Common.Enums;
 using System.Collections.Generic;
-using System.Runtime;
 
 namespace Mastercard.UI.Business.ViewModels
 {
@@ -11,6 +10,7 @@ namespace Mastercard.UI.Business.ViewModels
         public string Message { get; set; }
         public string MarketPlaceToken { get; set; }
         public int SegmentId { get; set; }
+
         /// <summary>
         /// Producto Id (Tipo entero en Quantum) y Guid (NetCommerce)
         /// </summary>
@@ -45,32 +45,37 @@ namespace Mastercard.UI.Business.ViewModels
         /// Qué tipo de Producto es. [Encriptado]
         /// </summary>
         public EnumCatalogNetCommerceType CatalogType { get; set; }
+
         /// <summary>
         /// USO: PCO
         /// Identificación
         /// </summary>
         public string Identification { get; set; }
+
         /// <summary>
         /// USO: PCO
-        /// 
+        ///
         /// </summary>
         public int IdentificationType { get; set; }
+
         /// <summary>
         /// USO:Net-Commerce
-        /// Celular 
+        /// Celular
         /// </summary>
-        public string Phone{ get; set; }
+        public string Phone { get; set; }
 
         /// <summary>
         /// USO: PCO
         /// Nombre
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
         /// USO: PCO
         /// Apellido
         /// </summary>
         public string LastName { get; set; }
+
         /// <summary>
         /// USO:Net-Commerce
         /// Dirección
@@ -82,26 +87,32 @@ namespace Mastercard.UI.Business.ViewModels
         /// Correo del Cliente
         /// </summary>
         public string Email { get; set; }
+
         #region Quantum
+
         /// <summary>
         /// Si cuenta con información aidicional (Válido para Quantum).
         /// </summary>
         public bool AditionalInformation { get; set; }
+
         /// <summary>
         /// Si tiene location (Quantum)
         /// </summary>
         public bool Location { get; set; }
+
         /// <summary>
         /// Sitio para quantum (Necesario para redención).
         /// </summary>
         public List<Site> Site { get; set; }
-        #endregion
+
+        #endregion Quantum
 
         /// <summary>
         /// USO:Net-Commerce
         /// Lista de ciudades si aplica
         /// </summary>
         public List<City> City { get; set; }
+
         /// <summary>
         /// USO:Net-Commerce
         /// Departamentos
@@ -110,12 +121,12 @@ namespace Mastercard.UI.Business.ViewModels
 
         /// <summary>
         /// USO:Net-Commerce
-        /// 
+        ///
         /// </summary>
         public int CityId { get; set; }
-        public int SiteId{ get; set; }
+
+        public int SiteId { get; set; }
         public int DepartmentId { get; set; }
-        
 
         /// <summary>
         /// Método para inicializar todo.
@@ -130,6 +141,7 @@ namespace Mastercard.UI.Business.ViewModels
     }
 
     #region Quantum
+
     public class City
     {
         public int City_id { get; set; }
@@ -137,17 +149,20 @@ namespace Mastercard.UI.Business.ViewModels
         public string Dep_id { get; set; }
         public string Dep_name { get; set; }
     }
+
     public class Department
     {
         /// <summary>
         /// Id
         /// </summary>
         public int Id { get; set; }
+
         /// <summary>
         /// Name
         /// </summary>
-        public string Name{ get; set; }
+        public string Name { get; set; }
     }
+
     public class Site
     {
         public int Site_id { get; set; }
@@ -157,5 +172,6 @@ namespace Mastercard.UI.Business.ViewModels
         public string City_id { get; set; }
         public string City_name { get; set; }
     }
-    #endregion
+
+    #endregion Quantum
 }

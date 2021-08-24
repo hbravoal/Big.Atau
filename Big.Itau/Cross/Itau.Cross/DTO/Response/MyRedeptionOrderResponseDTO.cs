@@ -1,9 +1,6 @@
 ﻿using Itau.Common.DTO.Request.MarketPlace;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Itau.Common.DTO.Response
 {
@@ -15,6 +12,7 @@ namespace Itau.Common.DTO.Response
         public List<OrderDetailViewModel> orderDetails { get; set; }
         public List<OrderExtendedPropertyViewModel> OrderExtendedProperties { get; set; }
     }
+
     public class OrderExtendedPropertyViewModel
     {
         public OrderExtentedPropertyTypeEnum Type { get; set; }
@@ -22,9 +20,9 @@ namespace Itau.Common.DTO.Response
         public string Value { get; set; }
         public int OrderId { get; set; }
     }
+
     public class OrderDetailViewModel
     {
-
         public int Quantity { get; set; }
         public string ProductId { get; set; }
         public virtual Product Product { get; set; }
@@ -44,4 +42,3 @@ namespace Itau.Common.DTO.Response
         public string Instructions { get; set; }
     }
 }
-

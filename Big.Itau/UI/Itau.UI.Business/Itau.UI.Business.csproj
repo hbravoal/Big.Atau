@@ -47,36 +47,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\AccountBL.cs" />
-    <Compile Include="BL\AwardBL.cs" />
-    <Compile Include="BL\CatalogBL.cs" />
-    <Compile Include="BL\MasterBl.cs" />
-    <Compile Include="BL\MisionBL.cs" />
-    <Compile Include="BL\RedemptionUIBl.cs" />
-    <Compile Include="BL\SegmentBL.cs" />
+    <Compile Include="BL\CatpchaValidate.cs" />
     <Compile Include="Helpers\SessionHelper.cs" />
     <Compile Include="Interface\IAccountBL.cs" />
     <Compile Include="Interface\IAuthentication.cs" />
     <Compile Include="Interface\ICatalogBL.cs" />
+    <Compile Include="Interface\ICatpcha.cs" />
     <Compile Include="Interface\IMasterBL.cs" />
     <Compile Include="Interface\IRedemptionUIBl.cs" />
-    <Compile Include="Interface\Providers\ICatalogFachade.cs" />
     <Compile Include="Interface\Providers\ICatalogProvider.cs" />
-    <Compile Include="Interface\IMisionBL.cs" />
-    <Compile Include="Interface\IAwardBL.cs" />
     <Compile Include="Interface\ISegmentBL.cs" />
-    <Compile Include="Interface\Providers\IRedeemFachade.cs" />
     <Compile Include="Interface\Providers\IRedeemProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\Catalog\CatalogFachade.cs" />
-    <Compile Include="Providers\Catalog\CatalogNetCommerceProvider.cs" />
     <Compile Include="Providers\Catalog\CatalogMarketPlaceProvider.cs" />
     <Compile Include="Providers\MarketPlaceAuthentication.cs" />
     <Compile Include="Providers\Redemptions\MyRedemptionMarketPlace.cs" />
     <Compile Include="Providers\Redemptions\RedeemQuantumProvider.cs" />
-    <Compile Include="ViewModels\AwardViewModel.cs" />
     <Compile Include="ViewModels\CatalogMarketplaceResponseModel.cs" />
     <Compile Include="ViewModels\CatalogViewModel.cs" />
-    <Compile Include="ViewModels\MisionViewModels.cs" />
     <Compile Include="ViewModels\MyRedemptionsViewModel.cs" />
     <Compile Include="ViewModels\ProfileModelViewModel.cs" />
     <Compile Include="ViewModels\RedemptionViewModel.cs" />
@@ -86,10 +74,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\API\Mastercard.Business\Mastercard.Business.csproj">
-      <Project>{f468dd0e-4b5c-462d-9c84-d2fe9b5385df}</Project>
-      <Name>Mastercard.Business</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Cross\Itau.Cross\Itau.Common.csproj">
       <Project>{4f284dca-7a79-47a5-876d-d70ce1513f0e}</Project>
       <Name>Itau.Common</Name>

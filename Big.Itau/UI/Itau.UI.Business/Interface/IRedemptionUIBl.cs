@@ -1,9 +1,7 @@
-﻿using Mastercard.Common.Helpers;
-using System.Threading.Tasks;
-using Mastercard.Common.DTO.Response;
-using Mastercard.Common.DTO.Response.NetCommerce;
-using Mastercard.Common.Wrapper;
+﻿using Itau.Common.DTO.Response;
+using Itau.Common.Wrapper;
 using Mastercard.UI.Business.ViewModels;
+using System.Threading.Tasks;
 
 namespace Mastercard.UI.Business.Interface
 {
@@ -12,7 +10,7 @@ namespace Mastercard.UI.Business.Interface
     /// </summary>
     public interface IRedemptionUIBl
     {
-        Task<Response> GetRedemption();
+        Task<Response<bool>> GetRedemption();
 
         /// <summary>
         /// Método para hacer redención
@@ -20,6 +18,5 @@ namespace Mastercard.UI.Business.Interface
         /// <param name="model"></param>
         /// <returns></returns>
         Task<Response<RedemptionResponse>> Redemption(RedemptionViewModel model);
-
     }
 }

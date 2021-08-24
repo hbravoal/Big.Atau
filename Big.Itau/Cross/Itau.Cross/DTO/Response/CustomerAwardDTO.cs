@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Itau.Common.DTO.Response
 {
@@ -12,6 +11,5 @@ namespace Itau.Common.DTO.Response
         public DateTime CreateDate { get; set; }
         public bool? Active { get; set; }
         public int Programid { get; set; }
-
     }
 }

@@ -1,9 +1,9 @@
-﻿using Mastercard.Common.Helpers;
+﻿using Itau.Common.Wrapper;
 
 namespace Mastercard.UI.Business.Interface
 {
     public interface IUserState
     {
-        Response GetGoal();
+        Response<bool> GetGoal();
     }
 }

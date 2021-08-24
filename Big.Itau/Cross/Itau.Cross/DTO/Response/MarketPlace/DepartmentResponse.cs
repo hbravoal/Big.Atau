@@ -20,12 +20,11 @@
         public string dep_name { get; set; }
     }
 
-
-
     public class QuantumCityResponse
     {
         public QuantumCityMessage response { get; set; }
     }
+
     public class CityQuantumResponse
     {
         public int city_id { get; set; }
@@ -42,6 +41,7 @@
     {
         public QuantumSiteMessage response { get; set; }
     }
+
     public class SiteQuantumResponse
     {
         public int Site_id { get; set; }

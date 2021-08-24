@@ -3,7 +3,7 @@ using System;
 
 namespace Itau.Common.Diagnostics
 {
-    public class ExceptionLogging
+    public static class ExceptionLogging
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
 

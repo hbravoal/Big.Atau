@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Mastercard.UI.Interface.MvcApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.vb" Inherits="Itau.UI.MvcApplication" Language="VB" %>

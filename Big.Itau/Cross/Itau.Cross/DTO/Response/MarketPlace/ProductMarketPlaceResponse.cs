@@ -43,6 +43,5 @@ namespace Itau.Common.DTO.Response.MarketPlace
         public bool Flag { get; set; }
 
         public bool additionalData { get; set; }
-
     }
 }

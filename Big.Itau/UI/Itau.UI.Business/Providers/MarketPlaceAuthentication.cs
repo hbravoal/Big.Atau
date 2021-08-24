@@ -1,6 +1,6 @@
-﻿using Mastercard.Common.DTO.Request.MarketPlace;
-using Mastercard.Common.DTO.Response.MarketPlace;
-using Mastercard.Common.Helpers;
+﻿using Itau.Common.DTO.Request.MarketPlace;
+using Itau.Common.DTO.Response.MarketPlace;
+using Itau.Common.Helpers;
 using Mastercard.UI.Business.Helpers;
 using Mastercard.UI.Business.Interface;
 using System.Configuration;
@@ -15,7 +15,7 @@ namespace Mastercard.UI.Business.Providers
     {
         public async Task Login()
         {
-            AuthMarketPlaceRequest request = new AuthMarketPlaceRequest();
+            var request = new AuthMarketPlaceRequest();
             request.email = ConfigurationManager.AppSettings["Marketplace.Authentication.Email"];
             request.password = ConfigurationManager.AppSettings["Marketplace.Authentication.Password"];
             var result = await ApiService.PostAsync<AuthMarketPlaceResponse>

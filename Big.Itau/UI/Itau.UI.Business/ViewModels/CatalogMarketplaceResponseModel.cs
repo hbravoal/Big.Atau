@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Mastercard.UI.Business.ViewModels
 {
     public class CatalogMarketplaceResponseModel
     {
-
         public string Id { get; set; }
         public string ProductCode { get; set; }
         public string Name { get; set; }
@@ -22,7 +17,6 @@ namespace Mastercard.UI.Business.ViewModels
         public int ProgramId { get; set; }
         public int BrandId { get; set; }
         public bool Location { get; set; }
-
     }
 
     public class CatalogViewModelMarket
@@ -32,6 +26,4 @@ namespace Mastercard.UI.Business.ViewModels
         public bool HaveRedemptions { get; set; }
         public List<CatalogMarketplaceResponseModel> Products { get; set; }
     }
-
-
 }

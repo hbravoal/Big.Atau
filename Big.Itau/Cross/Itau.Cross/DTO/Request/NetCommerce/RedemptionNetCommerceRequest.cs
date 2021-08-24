@@ -1,11 +1,11 @@
-﻿using System;
-using Itau.Common.DTO.Response;
+﻿using Itau.Common.DTO.Response;
 
 namespace Itau.Common.DTO.Request.NetCommerce
 {
-    public class RedemptionNetCommerceRequest 
+    public class RedemptionNetCommerceRequest
     {
         public CustomerDTO Customer { get; set; }
+
         /// <summary>
         /// Identificador del Programa para NetCommerce.
         /// </summary>
@@ -15,6 +15,7 @@ namespace Itau.Common.DTO.Request.NetCommerce
         /// Nombre del Programa de donde viene la redención.
         /// </summary>
         public string Source { get; set; }
+
         /// <summary>
         /// Identificador del GUID del producto.
         /// </summary>
@@ -28,7 +29,7 @@ namespace Itau.Common.DTO.Request.NetCommerce
         public string Address { get; set; }
 
         public int StateId { get; set; }
-        public int CityId{ get; set; }
+        public int CityId { get; set; }
 
         public int Gender { get; set; }
         public string PhoneNumber { get; set; }
